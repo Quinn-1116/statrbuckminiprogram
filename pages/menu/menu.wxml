@@ -1,0 +1,65 @@
+<view class="page-shell">
+  <view class="intro">
+    <view class="eyebrow">SHIKE COFFEE · 今日菜单</view>
+    <view class="page-title">选一杯喜欢的</view>
+    <view class="page-subtitle">好咖啡，从刚刚好的定制开始</view>
+  </view>
+
+  <view class="menu-list">
+    <view
+      wx:for="{{menuItems}}"
+      wx:key="id"
+      class="drink-card {{item.selected ? 'drink-card-selected' : ''}}"
+      data-id="{{item.id}}"
+      bindtap="chooseMenuItem"
+    >
+      <view class="drink-mark mark-{{item.id}}">
+        <view class="mark-ring"><view class="mark-core"></view></view>
+      </view>
+      <view class="drink-copy">
+        <view class="drink-name">{{item.name}}</view>
+        <view class="drink-description">{{item.description}}</view>
+      </view>
+      <view class="drink-price">{{item.priceLabel}}<text class="price-unit">起</text></view>
+      <view wx:if="{{item.selected}}" class="selected-mark">✓</view>
+    </view>
+  </view>
+
+  <view class="customizer">
+    <view class="section-heading">
+      <view>
+        <view class="section-title">专属定制</view>
+        <view class="section-caption">按你的喜好调整这一杯</view>
+      </view>
+      <view class="live-price">{{configuredPrice}}</view>
+    </view>
+
+    <view wx:for="{{optionGroups}}" wx:key="key" class="option-group">
+      <view class="option-title">{{item.title}}</view>
+      <view class="option-list">
+        <button
+          wx:for="{{item.options}}"
+          wx:for-item="option"
+          wx:key="id"
+          class="option-button {{option.selected ? 'option-selected' : ''}}"
+          data-group="{{item.key}}"
+          data-value="{{option.id}}"
+          bindtap="chooseOption"
+        >
+          {{option.name}}<text wx:if="{{option.priceLabel}}"> {{option.priceLabel}}</text>
+        </button>
+      </view>
+    </view>
+
+    <view class="price-note">糖度、温度和奶类选择不额外收费</view>
+  </view>
+
+  <view class="selection-summary">
+    <view class="summary-copy">
+      <view class="summary-label">当前选择</view>
+      <view class="summary-name">{{selectedMenuName}}</view>
+      <view class="summary-details">{{selectionSummary}}</view>
+    </view>
+    <view class="summary-price">{{configuredPrice}}</view>
+  </view>
+</view>

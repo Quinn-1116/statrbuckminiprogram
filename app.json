@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/menu/menu"
+  ],
+  "window": {
+    "navigationBarTitleText": "拾刻咖啡",
+    "navigationBarBackgroundColor": "#f7f8f5",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8f5",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
