@@ -4,6 +4,7 @@ const {
   getCustomizationOptions,
   getMenuItems
 } = require('../../domain/menu')
+const { addConfiguredDrink } = require('../../domain/cart')
 
 const optionGroups = [
   { key: 'cupSize', title: '杯型', optionsKey: 'cupSizes' },
@@ -49,6 +50,7 @@ Page({
     const items = getMenuItems()
     const selection = makeSelection(items[0].id)
     this.items = items
+    this.refreshCartCount()
     this.setData({
       menuItems: makeMenuView(items, selection),
       selectedMenuName: items[0].name,
@@ -57,6 +59,10 @@ Page({
       optionGroups: makeOptionGroups(getCustomizationOptions(), selection),
       configuredPrice: formatPrice(createConfiguredDrink(selection).priceFen)
     })
+  },
+
+  onShow() {
+    this.refreshCartCount()
   },
 
   chooseMenuItem(event) {
@@ -91,5 +97,26 @@ Page({
       optionGroups: makeOptionGroups(getCustomizationOptions(), selection),
       configuredPrice: formatPrice(configuredDrink.priceFen)
     })
+  },
+
+  addToCart() {
+    const cart = wx.getStorageSync('coffee-cart') || []
+    const updatedCart = addConfiguredDrink(cart, createConfiguredDrink(this.data.selection))
+    wx.setStorageSync('coffee-cart', updatedCart)
+    this.setData({ cartCount: updatedCart.reduce((count, line) => count + line.quantity, 0) })
+    wx.showToast({ title: '已加入购物车', icon: 'success' })
+  },
+
+  refreshCartCount() {
+    const cart = wx.getStorageSync('coffee-cart') || []
+    this.setData({ cartCount: cart.reduce((count, line) => count + line.quantity, 0) })
+  },
+
+  openCart() {
+    wx.navigateTo({ url: '/pages/cart/cart' })
+  },
+
+  openOrderHistory() {
+    wx.navigateTo({ url: '/pages/orders/orders' })
   }
 })

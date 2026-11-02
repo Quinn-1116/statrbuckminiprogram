@@ -62,4 +62,10 @@
     </view>
     <view class="summary-price">{{configuredPrice}}</view>
   </view>
+
+  <view class="menu-actions">
+    <button class="cart-link" bindtap="openCart">购物车<text wx:if="{{cartCount}}"> · {{cartCount}}</text></button>
+    <button class="add-button" bindtap="addToCart">加入购物车</button>
+  </view>
+  <button class="history-link" bindtap="openOrderHistory">我的订单</button>
 </view>

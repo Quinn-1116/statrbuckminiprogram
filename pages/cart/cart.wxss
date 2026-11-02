@@ -1,0 +1,279 @@
+.page-shell {
+  min-height: 100vh;
+  padding: 30rpx 30rpx 60rpx;
+}
+
+.intro {
+  padding: 12rpx 0 28rpx;
+}
+
+.page-title {
+  color: #202722;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.page-subtitle,
+.section-caption {
+  margin-top: 8rpx;
+  color: #737d77;
+  font-size: 23rpx;
+}
+
+.cart-list {
+  border-top: 1rpx solid #e5e9e4;
+}
+
+.cart-line {
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid #e5e9e4;
+}
+
+.line-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.line-name {
+  color: #27332c;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.line-options,
+.line-unit-price {
+  margin-top: 7rpx;
+  color: #737d77;
+  font-size: 21rpx;
+}
+
+.quantity-control {
+  display: flex;
+  height: 54rpx;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.quantity-control button {
+  width: 52rpx;
+  height: 52rpx;
+  border: 1rpx solid #dfe5df;
+  border-radius: 6rpx;
+  color: #28583f;
+  font-size: 30rpx;
+  line-height: 50rpx;
+}
+
+.quantity-control text,
+.line-quantity {
+  min-width: 30rpx;
+  color: #27332c;
+  font-size: 23rpx;
+  text-align: center;
+}
+
+.line-price {
+  flex: 0 0 auto;
+  color: #28583f;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 22rpx 0;
+  color: #27332c;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.form-section {
+  padding-top: 24rpx;
+}
+
+.section-heading {
+  color: #27332c;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.shop-list {
+  display: flex;
+  gap: 12rpx;
+  margin-top: 14rpx;
+}
+
+.choice-button {
+  display: flex;
+  min-height: 88rpx;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12rpx 16rpx;
+  border: 1rpx solid #dfe5df;
+  border-radius: 8rpx;
+  color: #3a463e;
+  font-size: 24rpx;
+  text-align: left;
+}
+
+.choice-detail {
+  margin-top: 5rpx;
+  color: #737d77;
+  font-size: 19rpx;
+}
+
+.choice-selected {
+  border-color: #39745b;
+  background: #edf4ef;
+  color: #28583f;
+}
+
+.slot-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+  margin-top: 16rpx;
+}
+
+.slot-button {
+  width: calc((100% - 36rpx) / 4);
+  height: 66rpx;
+  border: 1rpx solid #dfe5df;
+  border-radius: 6rpx;
+  color: #3a463e;
+  font-size: 23rpx;
+  line-height: 64rpx;
+  text-align: center;
+}
+
+.no-slots {
+  margin-top: 16rpx;
+  padding: 18rpx;
+  border-left: 4rpx solid #b64f3b;
+  background: #f7e9df;
+  color: #633d32;
+  font-size: 22rpx;
+  line-height: 1.5;
+}
+
+.checkout-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+  margin-top: 30rpx;
+  padding: 20rpx 0;
+  border-top: 1rpx solid #e5e9e4;
+}
+
+.checkout-total {
+  flex: 1;
+}
+
+.total-caption {
+  color: #737d77;
+  font-size: 20rpx;
+}
+
+.total-value {
+  margin-top: 4rpx;
+  color: #b64f3b;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 82rpx;
+  padding: 0 28rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 82rpx;
+}
+
+.primary-button {
+  background: #39745b;
+  color: #fff;
+  font-weight: 600;
+}
+
+.primary-button[disabled] {
+  background: #aab7af;
+  color: #fff;
+}
+
+.secondary-button {
+  margin-top: 22rpx;
+  border: 1rpx solid #39745b;
+  color: #28583f;
+}
+
+.empty-state {
+  padding: 100rpx 20rpx;
+  text-align: center;
+}
+
+.empty-title {
+  color: #27332c;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.empty-copy {
+  margin-top: 12rpx;
+  color: #737d77;
+  font-size: 22rpx;
+}
+
+.confirmation {
+  padding: 34rpx 0 40rpx;
+  text-align: center;
+}
+
+.confirmation-mark {
+  width: 74rpx;
+  height: 74rpx;
+  margin: 0 auto 16rpx;
+  border-radius: 50%;
+  background: #39745b;
+  color: #fff;
+  font-size: 38rpx;
+  line-height: 74rpx;
+}
+
+.details-section {
+  margin-top: 26rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #e5e9e4;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24rpx;
+  padding-top: 18rpx;
+  color: #737d77;
+  font-size: 23rpx;
+}
+
+.detail-row text:last-child {
+  color: #27332c;
+  text-align: right;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 14rpx;
+  margin-top: 38rpx;
+}
+
+.confirmation-actions button {
+  flex: 1;
+}

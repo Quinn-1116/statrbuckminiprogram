@@ -1,0 +1,51 @@
+<view class="page-shell">
+  <view class="page-heading">
+    <view class="page-title">我的订单</view>
+    <view class="page-caption">仅显示你的订单</view>
+  </view>
+
+  <view wx:if="{{selectedOrder}}" class="order-detail">
+    <view class="detail-heading">
+      <view>
+        <view class="section-title">订单详情</view>
+        <view class="order-status">{{selectedOrder.statusLabel}}</view>
+      </view>
+      <button class="close-button" bindtap="closeOrder" aria-label="关闭订单详情">×</button>
+    </view>
+    <view class="detail-row"><text>取餐人</text><text>{{selectedOrder.pickupName}}</text></view>
+    <view class="detail-row"><text>门店</text><text>{{selectedOrder.shopName}}</text></view>
+    <view class="detail-row"><text>取餐时间</text><text>{{selectedOrder.pickupTimeLabel}}</text></view>
+    <view class="order-items">
+      <view class="section-title">饮品</view>
+      <view wx:for="{{selectedOrder.items}}" wx:key="menuItemId" class="item-row">
+        <view class="item-copy">
+          <view>{{item.menuItemName}} · {{item.cupSizeName}} ×{{item.quantity}}</view>
+          <view class="item-options">{{item.sweetnessName}} · {{item.temperatureName}} · {{item.milkName}}</view>
+        </view>
+        <view>{{item.lineTotalLabel}}</view>
+      </view>
+    </view>
+    <view class="detail-total"><text>合计</text><text>{{selectedOrder.totalLabel}}</text></view>
+    <view class="readonly-note">订单提交后不能修改或取消</view>
+  </view>
+
+  <view wx:elif="{{isEmpty}}" class="empty-state">
+    <view class="empty-title">还没有订单</view>
+    <view class="empty-caption">提交订单后会显示在这里</view>
+  </view>
+
+  <view wx:else class="order-list">
+    <view wx:for="{{orders}}" wx:key="id" class="order-row" data-id="{{item.id}}" bindtap="openOrder">
+      <view class="row-topline">
+        <view class="shop-name">{{item.shopName}}</view>
+        <view class="order-status">{{item.statusLabel}}</view>
+      </view>
+      <view class="items-summary">{{item.itemsSummary}}</view>
+      <view class="row-footline">
+        <view>{{item.pickupTimeLabel}}</view>
+        <view class="order-total">{{item.totalLabel}}</view>
+      </view>
+    </view>
+  </view>
+  <button wx:if="{{hasMore}}" class="load-more" bindtap="loadMoreOrders" loading="{{isLoadingMore}}" disabled="{{isLoadingMore}}">加载更多订单</button>
+</view>

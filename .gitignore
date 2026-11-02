@@ -1,0 +1,4 @@
+node_modules/
+admin/cloudbase.bundle.js
+cloudfunctions/*/dist/
+cloudfunctions/*/node_modules/

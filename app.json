@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/menu/menu"
+    "pages/menu/menu",
+    "pages/cart/cart",
+    "pages/orders/orders"
   ],
   "window": {
     "navigationBarTitleText": "拾刻咖啡",

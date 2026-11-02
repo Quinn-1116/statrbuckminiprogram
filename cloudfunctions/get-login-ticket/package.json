@@ -1,0 +1,12 @@
+{
+  "name": "get-login-ticket",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "dependencies": {
+    "@cloudbase/node-sdk": "4.2.1"
+  },
+  "overrides": {
+    "axios": "1.21.0"
+  }
+}

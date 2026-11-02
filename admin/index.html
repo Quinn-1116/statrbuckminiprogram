@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>拾刻咖啡 · 订单管理</title>
+    <link rel="stylesheet" href="/admin.css">
+  </head>
+  <body>
+    <main id="login-view" class="login-view">
+      <form id="login-form" class="login-form">
+        <div class="brand-line">拾刻咖啡 <span>订单管理</span></div>
+        <label for="username">管理员账号</label>
+        <input id="username" name="username" autocomplete="username" required>
+        <label for="password">密码</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <p id="login-error" class="error-message" role="alert"></p>
+        <button class="primary-button" type="submit">登录</button>
+      </form>
+    </main>
+
+    <main id="admin-view" class="admin-view" hidden>
+      <header class="topbar">
+        <div class="brand-line">拾刻咖啡 <span>订单管理</span></div>
+        <button id="logout-button" class="quiet-button" type="button">退出</button>
+      </header>
+      <section class="toolbar" aria-label="订单筛选">
+        <h1>订单</h1>
+        <label>门店
+          <select id="shop-filter">
+            <option value="">全部门店</option>
+            <option value="yunshan">云山店</option>
+            <option value="hupan">湖畔店</option>
+          </select>
+        </label>
+        <label>状态
+          <select id="status-filter">
+            <option value="">全部状态</option>
+            <option value="Pending">待制作</option>
+            <option value="Preparing">制作中</option>
+            <option value="Ready for Pickup">可取餐</option>
+            <option value="Picked Up">已取走</option>
+          </select>
+        </label>
+      </section>
+      <section id="order-list" class="order-list" aria-live="polite"></section>
+      <button id="load-more-orders" class="quiet-button load-more-button" type="button" hidden>加载更多订单</button>
+      <p id="page-error" class="error-message page-error" role="alert"></p>
+    </main>
+    <script src="/cloudbase.bundle.js" defer></script>
+    <script src="/admin.js" defer></script>
+  </body>
+</html>

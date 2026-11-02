@@ -1,0 +1,101 @@
+<view class="page-shell">
+  <block wx:if="{{order}}">
+    <view class="confirmation">
+      <view class="confirmation-mark">✓</view>
+      <view class="page-title">订单已提交</view>
+        <view class="page-subtitle">订单已同步</view>
+    </view>
+
+    <view class="section-heading">订单内容</view>
+    <view wx:for="{{order.displayItems}}" wx:key="configurationKey" class="cart-line">
+      <view class="line-main">
+        <view class="line-name">{{item.menuItemName}} · {{item.cupSizeName}}</view>
+        <view class="line-options">{{item.sweetnessName}} · {{item.temperatureName}} · {{item.milkName}}</view>
+      </view>
+      <view class="line-quantity">×{{item.quantity}}</view>
+      <view class="line-price">{{item.lineTotalLabel}}</view>
+    </view>
+    <view class="total-row"><text>合计</text><text>{{order.totalLabel}}</text></view>
+
+    <view class="details-section">
+      <view class="section-heading">取餐信息</view>
+      <view class="detail-row"><text>取餐人</text><text>{{order.pickupName}}</text></view>
+      <view class="detail-row"><text>门店</text><text>{{order.shopName}}</text></view>
+      <view class="detail-row"><text>营业时间</text><text>{{order.shopHours}}</text></view>
+      <view class="detail-row"><text>取餐时间</text><text>{{order.pickupTimeLabel}}</text></view>
+      <view class="detail-row"><text>订单状态</text><text>{{order.statusLabel}}</text></view>
+    </view>
+    <view class="confirmation-actions">
+      <button class="secondary-button" bindtap="backToMenu">返回菜单</button>
+      <button class="primary-button" bindtap="viewOrderHistory">我的订单</button>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="intro">
+      <view class="page-title">购物车</view>
+      <view class="page-subtitle">确认饮品、门店和取餐时间</view>
+    </view>
+
+    <view wx:if="{{isCartEmpty}}" class="empty-state">
+      <view class="empty-title">购物车还是空的</view>
+      <view class="empty-copy">先从菜单挑选喜欢的饮品</view>
+      <button class="secondary-button" bindtap="backToMenu">返回菜单</button>
+    </view>
+
+    <block wx:else>
+      <view class="cart-list">
+        <view wx:for="{{cart}}" wx:key="configurationKey" class="cart-line">
+          <view class="line-main">
+            <view class="line-name">{{item.menuItemName}} · {{item.cupSizeName}}</view>
+            <view class="line-options">{{item.sweetnessName}} · {{item.temperatureName}} · {{item.milkName}}</view>
+            <view class="line-unit-price">{{item.priceLabel}} / 杯</view>
+          </view>
+          <view class="quantity-control">
+            <button data-key="{{item.configurationKey}}" data-delta="-1" bindtap="changeQuantity" aria-label="减少数量">−</button>
+            <text>{{item.quantity}}</text>
+            <button data-key="{{item.configurationKey}}" data-delta="1" bindtap="changeQuantity" aria-label="增加数量">+</button>
+          </view>
+          <view class="line-price">{{item.lineTotalLabel}}</view>
+        </view>
+      </view>
+
+      <view class="total-row"><text>商品合计</text><text>{{cartTotal}}</text></view>
+
+      <view class="form-section">
+        <view class="section-heading">选择门店</view>
+        <view class="shop-list">
+          <button
+            wx:for="{{shops}}"
+            wx:key="id"
+            class="choice-button {{selectedShopId === item.id ? 'choice-selected' : ''}}"
+            data-id="{{item.id}}"
+            bindtap="chooseShop"
+          >
+            <text>{{item.name}}</text><text class="choice-detail">营业 {{item.openingHours}}</text>
+          </button>
+        </view>
+      </view>
+
+      <view class="form-section">
+        <view class="section-heading">选择取餐时间</view>
+        <view class="section-caption">仅可预约今天 10:00–21:00 的未来整点</view>
+        <view wx:if="{{hasPickupSlots}}" class="slot-list">
+          <button
+            wx:for="{{pickupSlots}}"
+            wx:key="value"
+            class="slot-button {{selectedPickupTime === item.value ? 'choice-selected' : ''}}"
+            data-value="{{item.value}}"
+            bindtap="choosePickupTime"
+          >{{item.label}}</button>
+        </view>
+        <view wx:else class="no-slots">今天已没有可预约的取餐时间，请明天再来下单。</view>
+      </view>
+
+      <view class="checkout-bar">
+        <view class="checkout-total"><view class="total-caption">合计</view><view class="total-value">{{cartTotal}}</view></view>
+        <button class="primary-button" disabled="{{!hasPickupSlots}}" bindtap="submitOrder">提交订单</button>
+      </view>
+    </block>
+  </block>
+</view>
