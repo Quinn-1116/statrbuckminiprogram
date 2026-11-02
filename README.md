@@ -1,0 +1,2 @@
+# statrbuckminiprogram
+first vibecoding record
